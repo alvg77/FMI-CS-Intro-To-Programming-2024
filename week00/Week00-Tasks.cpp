@@ -34,7 +34,7 @@ void task1() {
     int number;
     std::cout << "Enter a number: ";
     std::cin >> number;
-    std::cin.clear();
+    std::cin.ignore(10000, '\n');
 
     int digits[3] = { number / 100, (number / 10) % 10, number % 10 };
 
@@ -48,7 +48,7 @@ void task1() {
 void task2() {
     int a, b;
     std::cin >> a >> b;
-    std::cin.clear();
+    std::cin.ignore(10000, '\n');
 
     std::cout << "a: " << a << std::endl;
     std::cout << "b: " << b << std::endl;
@@ -64,28 +64,28 @@ void task2() {
 void task3() {
     int a, b;
     std::cin >> a >> b;
-    std::cin.clear();
+    std::cin.ignore(10000, '\n');
     std::cout << "num 1: " << a << ", num 2: " << b << " -> " << (a % b == 0 ? 1 : 0) << std::endl;
 }
 
 void task4() {
     int a, b;
     std::cin >> a >> b;
-    std::cin.clear();
+    std::cin.ignore(10000, '\n');
     std::cout << a * b << " - " << ((a * b) % 2 == 0 ? 1 : 0) << std::endl;
 }
 
 void task5() {
     int a, b, c;
     std::cin >> a >> b >> c;
-    std::cin.clear();
+    std::cin.ignore(10000, '\n');
     std::cout << ((a + b > c && a + c > b && b + c > a) == 1 ? "true" : "false") << std::endl;
 }
 
 void task6() {
     int a, b, c;
     std::cin >> a >> b >> c;
-    std::cin.clear();
+    std::cin.ignore(10000, '\n');
     std::cout << max(a, max(b, c)) << ", " << min(a, min(b, c));
 }
 
@@ -95,6 +95,7 @@ void task7() {
 
     std::cin >> num;
     std::cin >> intervalStart >> intervalEnd;
+    std::cin.ignore(10000, '\n');
 
     if (num >= intervalStart && num <= intervalEnd) {
         std::cout << "true" << std::endl;
