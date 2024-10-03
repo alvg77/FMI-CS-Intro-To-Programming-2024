@@ -85,7 +85,7 @@ void task5() {
     std::cin >> letter;
     std::cin.ignore(10000, '\n');
 
-    std::cout << (char) (letter - 32);
+    std::cout << (char) (letter - 'a' + 'A');
 }
 
 void task6() {
