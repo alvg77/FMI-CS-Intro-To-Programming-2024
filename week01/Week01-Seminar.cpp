@@ -127,27 +127,11 @@ void task6() {
 
     std::cin >> a >> b >> c;
 
-    (a > b ? 
-        (a > c ?  
-            (b > c ?
-                std::cout << a << " " << b << " " << c << std::endl
-            :
-                std::cout << a << " " << c << " " << b << std::endl
-            )
-        :
-            std::cout << c << " " << a << " " << b << std::endl
-        )
-    : 
-        (b > c ? 
-            (a > c ?
-                std::cout << b << " " << a << " " << c << std::endl
-            :
-                std::cout << b << " " << c << " " << a << std::endl
-            )
-        :
-            std::cout << c << " " << b << " " << a << std::endl
-        )
-    );
+    short max = a > b && a > c ? a : b > c ? b : c;
+    short min = a < b && a < c ? a : b < c ? b : c;
+    short mid = a + b + c - max - mid;
+
+    std::cout << max << " " << mid << " " << min << " " << std::endl;
 }
 
 void task7()  {
