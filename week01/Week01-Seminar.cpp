@@ -101,9 +101,13 @@ void task4() {
 
     double distance = distanceBetweenPoints(point, center);
 
+    // constexpr has compile time evaluation, can be used in such context
+    constexpr double EPSILON = 10e-6;
+
     if (radius > distance) {
         std::cout << "Inside" << std::endl;
-    } else if (radius == distance) {
+    // fabs is only for floating point numbers
+    } else if (std::fabs(distance - radius) < EPSILON) {
         std::cout << "On" << std::endl;
     } else {
         std::cout << "Outside" << std::endl;
