@@ -1,5 +1,6 @@
 #include <iostream>
 #include <limits>
+#include <cmath>
 
 void task1();
 void task2();
@@ -9,6 +10,13 @@ void task5();
 void task6();
 void task7();
 void task8();
+void task9();
+void task10();
+void task11();
+void task12();
+void task13();
+
+bool isPrime(unsigned);
 
 int main() {
     task7();
@@ -30,7 +38,7 @@ void task1() {
 }
 
 void task2() {
-    unsigned int n;
+    unsigned n;
     int max = std::numeric_limits<int>().min();
 
     for (int i = 0; i < n-1; ++i) {
@@ -86,27 +94,21 @@ void task4() {
 }
 
 void task5() {
-    unsigned int n;
-    bool prime = true;
-    unsigned int i = 2;
+    unsigned n;
+    unsigned i = 2;
 
     std::cin >> n;
 
-    while (i <= sqrt(n) && prime) {
-        if (n % i == 0) prime = false; 
-        ++i;
-    }
-
-    if (prime) 
+    if (isPrime(n)) 
         std::cout << "A prime number" << std::endl;
     else  
         std::cout << "Not a prime number" << std::endl;
 }
 
 void task6() {
-    unsigned int n;
-    unsigned int fibP = 0, fibC = 1;
-    unsigned int i = 2;
+    unsigned n;
+    unsigned fibP = 0, fibC = 1;
+    unsigned i = 2;
 
     std::cin >> n;
 
@@ -124,8 +126,8 @@ void task6() {
 }
 
 void task7() {
-    unsigned int n;
-    unsigned int sum = 1;
+    unsigned n;
+    unsigned sum = 1;
     
     std::cin >> n;
 
@@ -159,7 +161,7 @@ void task8() {
 }
 
 void task9() {
-    unsigned int n;
+    unsigned n;
     unsigned count = 0;
 
     std::cin >> n;
@@ -173,8 +175,8 @@ void task9() {
 }
 
 void task10(){
-    unsigned int n;
-    unsigned int sum = 0;
+    unsigned n;
+    unsigned sum = 0;
 
     std::cin >> n;
 
@@ -187,12 +189,12 @@ void task10(){
 }
 
 void task11() {
-    unsigned int a, b;
-    unsigned int largest = 1;
+    unsigned a, b;
+    unsigned largest = 1;
 
     std::cin >> a >> b;
 
-    for (int i = 2; i <= std::min(a, b); i++) {
+    for (unsigned i = 2; i <= std::min(a, b); i++) {
         if (a % i == 0 && b % i == 0) {
             largest = i;
         }
@@ -202,9 +204,49 @@ void task11() {
 }
 
 void task12() {
+    unsigned short d = 2;
+    int num;
+    
+    std::cin >> num;
 
+    while (num != 1) {
+        if (num % d == 0) {
+            num /= d;
+            std::cout << d << std::endl;
+        } else {
+            while (!isPrime(++d));
+        }
+    }
 }
 
 void task13() {
+    unsigned short n;
+    unsigned num, candidate;
+    unsigned counter = 0;
 
+    std::cin >> n;
+    
+    for (unsigned short i = 0; i < n; ++i) {
+        std::cin >> num;
+        if (counter == 0) {
+            candidate = num;
+            counter = 1;
+        } else if (candidate == num) {
+            ++counter;
+        } else {
+            --counter;
+        }
+    }
+ 
+    std::cout << candidate << std::endl;
+}
+
+bool isPrime(unsigned num) { 
+    unsigned i = 2;
+
+    while (i <= sqrt(num)) {
+        if (num % i == 0) return false; 
+        ++i;
+    }
+    return true;
 }
