@@ -1,4 +1,5 @@
 #include <iostream>
+#include <cmath>
 
 std::string toBinaryStr(unsigned);
 unsigned toBinary(unsigned);
