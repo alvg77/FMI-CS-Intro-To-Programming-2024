@@ -48,7 +48,6 @@ void drawPaw(int x, int y, int len, uint8_t r, uint8_t g, uint8_t b) {
     sdlw::drawLine(x + 20, y, x + 20, y + len);
     int tSize = 7;
     for (int i = x - 20; i < x + 20; i += 2 * tSize) {
-        std::cout << i << " " << tSize << " " << x << std::endl;
         drawCircleOutline(i + tSize, y + len, tSize, 2, r, g, b);
     }
 }
