@@ -10,6 +10,14 @@ int strlen_rec(const char str[], int i) {
 }
 
 void shift_characters(char str[], int start_idx, int positions) {
+    if (start_idx < 0) {
+        return;
+    }
+
+    if (positions <= 0) {
+        return;
+    }
+
     int i = start_idx;
     int j = start_idx + positions;
     while (str[i] && str[j]) {
@@ -143,6 +151,11 @@ int find_word(const char str[], const char word[]) {
 
 void remove_word(char str[], const char word[]) {
     int index  = find_word(str, word);
+
+    if (index == -1) {
+        return;
+    }
+
     shift_characters(str, index, strlen_rec(word, 0)+1);
 }
 
@@ -169,7 +182,28 @@ void reverse_sentence(char destination[], const char source[]) {
 }
 
 void replace_word(char str[], const char word1[], const char word2[]) {
-    
+    int index = find_word(str, word1);
+    if (index == -1) {
+        return; 
+    }
+
+    int len1 = strlen_rec(word1, 0);
+    int len2 = strlen_rec(word2, 0);
+
+    if (len2 > len1) {
+        for (int i = strlen_rec(str, 0); i >= index + len1; --i) {
+            str[i + (len2 - len1)] = str[i];
+        }
+    } else if (len2 < len1) {
+        for (int i = index + len1; str[i] != '\0'; ++i) {
+            str[i - (len1 - len2)] = str[i];
+        }
+        str[strlen_rec(str, 0) - (len1 - len2)] = '\0';
+    }
+
+    for (int i = 0; i < len2; ++i) {
+        str[index + i] = word2[i];
+    }
 }
 
 int main() {
