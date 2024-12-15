@@ -2,6 +2,63 @@
 #include <cstring>
 #include <cmath>
 
+int strlen_rec(const char str[], int i);
+void shift_characters(char str[], int start_idx, int positions);
+bool is_numeric(char c);
+bool is_whitespace(char c);
+void to_upper_case(char str[]);
+int atoi(const char str[]);
+std::size_t find_longest_word(const char str[]);
+void trim(char str[]);
+void decode(char destination[], const char source[]);
+int find_word(const char str[], const char word[]);
+void remove_word(char str[], const char word[]);
+void reverse_sentence(char destination[], const char source[]);
+void replace_word(char str[], const char word1[], const char word2[]);
+
+int main() {
+    // task 1 
+    // char str[] = "Hello Jimmy!";
+    // to_upper_case(str);
+    // std::cout << str << '\n'; // -> HELLO JIMMY!
+
+    // task 2
+    // std::cout << atoi("123filler") + atoi("-81morefiller") << '\n'; // -> 42
+
+    //task 3
+    // std::cout << find_longest_word("Hello, my name is Ivancho") << '\n'; // -> 18
+
+    // task 4
+    // char str[] = "    Hello World     ";
+    // trim(str);
+    // std::cout << str << '\n'; // -> Hello World
+
+    // task 5
+    // char buffer[255];
+    // decode(buffer, "a2b10c");
+    // std::cout << buffer << '\n'; // -> abbcccccccccc
+
+    // task 6
+    // std::cout << find_word("I am the best programmer ever", "programmer") << '\n'; // -> 14
+
+    // task 7
+    // char str[] = "I am the best programmer ever";
+    // remove_word(str, "programmer");
+    // std::cout << str << '\n'; // -> I am the best ever
+
+    // task 8
+    // char buffer[255];
+    // reverse_sentence(buffer, "May the force be with you");
+    // std::cout << buffer << '\n'; // -> you with be force the May
+
+    // task 9
+    // char str[] = "I am the best programmer ever";
+    // replace_word(str, "programmer", "boxer");
+    // std::cout << str << '\n'; // -> I am the best boxer ever
+
+    return 0;
+}
+
 int strlen_rec(const char str[], int i) {
     if (!str[i]) {
         return i;
@@ -61,8 +118,6 @@ int atoi(const char str[]) {
 
     return c ? number : -number;
 }
-
-
 
 std::size_t find_longest_word(const char str[]) {
     int longest_index = 0;
@@ -204,47 +259,4 @@ void replace_word(char str[], const char word1[], const char word2[]) {
     for (int i = 0; i < len2; ++i) {
         str[index + i] = word2[i];
     }
-}
-
-int main() {
-    // task 1 
-    // char str[] = "Hello Jimmy!";
-    // to_upper_case(str);
-    // std::cout << str << '\n'; // -> HELLO JIMMY!
-
-    // task 2
-    // std::cout << atoi("123filler") + atoi("-81morefiller") << '\n'; // -> 42
-
-    //task 3
-    // std::cout << find_longest_word("Hello, my name is Ivancho") << '\n'; // -> 18
-
-    // task 4
-    // char str[] = "    Hello World     ";
-    // trim(str);
-    // std::cout << str << '\n'; // -> Hello World
-
-    // task 5
-    // char buffer[255];
-    // decode(buffer, "a2b10c");
-    // std::cout << buffer << '\n'; // -> abbcccccccccc
-
-    // task 6
-    // std::cout << find_word("I am the best programmer ever", "programmer") << '\n'; // -> 14
-
-    // task 7
-    // char str[] = "I am the best programmer ever";
-    // remove_word(str, "programmer");
-    // std::cout << str << '\n'; // -> I am the best ever
-
-    // task 8
-    // char buffer[255];
-    // reverse_sentence(buffer, "May the force be with you");
-    // std::cout << buffer << '\n'; // -> you with be force the May
-
-    // task 9
-    char str[] = "I am the best programmer ever";
-    replace_word(str, "programmer", "boxer");
-    std::cout << str << '\n'; // -> I am the best boxer ever
-
-    return 0;
 }
