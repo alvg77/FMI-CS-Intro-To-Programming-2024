@@ -94,7 +94,23 @@ int* find_longest_arithmetic_progression_subarray(int* arr, std::size_t size) {
 
 // task 2
 double number_problem(double* arr, std::size_t size) {
+    int k = -1;
 
+    for (int i = 1; i < size - 1; ++i) {
+        double prev = std::abs(arr[0] - arr[i]);
+        bool all_matching = true;
+        for (int j = 1; j < size - i; ++j) {
+            if (!(std::abs(std::abs(arr[j] - arr[j + i]) - prev) < 1.0e-10)) {
+                all_matching = false;
+            }
+        }
+
+        if (all_matching && i > k) {
+            k = i;
+        }
+    }
+
+    return k;
 }
 
 // task 3
